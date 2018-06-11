@@ -4,8 +4,6 @@
 #include <assert.h>
 #include <dirent.h>
 #include "execution.h"
-//#define Directory_PATH "/home/maga"
-//# define char Prompt_Command [1025]
 # define MAXCHAR  1025
 main(){
 
@@ -20,7 +18,7 @@ main(){
 	RootDirectory = opendir(Directory_PATH);
 	//////////////////////////////
 	char Prompt_Command [1025];
-	char Whitespace[2] = "-";
+	const char Whitespace[2] = "-";
 	char *Command;
 	char *parameter1;
 	char *parameter2;
@@ -71,6 +69,8 @@ main(){
 				parameter2 = strtok(NULL,Whitespace);
 				printf("%s\n",parameter2);				
 
+				cp(parameter1,parameter2);
+
 				command(Prompt_Command);
 				Execute_Command(Prompt_Command);
 			}
@@ -79,6 +79,8 @@ main(){
 				printf("%s\n",parameter1);
 				parameter2 = strtok(NULL,Whitespace);
 				printf("%s\n",parameter2);
+
+				mv(parameter1,parameter2);
 
 
 				command(Prompt_Command);
@@ -120,6 +122,8 @@ main(){
 				printf("quit");	
 				printf("HASTA PRONTO");
 				exit(1);
+				//Kill 0
+				// AQUI DEBO MATAR TODOS LOS PROCESOS 
 			}
 			else{
 				perror("INGRESE UN COMANDO VALIDO");
